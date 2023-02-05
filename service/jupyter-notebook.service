@@ -1,0 +1,17 @@
+[Unit]
+Description=jupyter-notebook of WP3 prototypes
+After=network.target local-fs.target remote-fs.target
+
+[Service]
+Type=simple
+User=jupyter
+Group=jupyter
+
+ExecStart=/usr/local/bin/jupyter notebook -y --config=/vagrant/service/jupyter_notebook_config.py
+KillMode=process
+PrivateTmp=false
+PermissionsStartOnly=true
+Restart=Always
+
+[Install]
+WantedBy=multi-user.target
